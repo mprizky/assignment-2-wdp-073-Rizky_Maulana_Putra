@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>In Class Challenge</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- <style>
+        body {
+        margin: 0;
+        padding: 0;
+        background: rgb(235, 233, 233);
+        }
+
+        .navbar {
+        background-color: white;
+        padding: 10px;
+        }
+
+        .navbar ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: right;
+        }
+
+        .navbar li {
+        display:inline;
+        }
+
+        .navbar a {
+        color: black;
+        text-decoration: none;
+        padding: 10px 20px;
+        }
+
+        .navbar a:hover {
+        background-color: #555;
+        color: white;
+        }
+
+        header {
+            display: flex;
+            /* justify-content: space-between; */
+            padding: 30px;
+            padding-right: 70px;
+            background-color: white;
+            margin: 20px;
+            gap: 70px;
+        }
+
+        #display-picture {
+            display: flex;
+        }
+
+        #nama-anda {
+            float: left;
+        }
+
+        #availibility {
+            float: left;
+            padding-top: 15px;
+            padding-left: 100px;
+        
+        }
+
+        .input {
+            width: 99%;
+        }
+
+        form {
+            padding: 0px;
+            margin: 20px;
+            background-color: white;
+        }
+
+        #btn-catch-1 {
+            background-color: blue;
+            color: white;
+            padding: 1em;
+            border: solid 1px;
+            cursor: pointer;
+            border-radius: 0.5em;
+        }
+
+        #btn-catch-2 {
+            color: black;
+            padding: 1em;
+            border: solid 1px green;
+            cursor: pointer;
+            border-radius: 0.5em;
+        }
+
+        #btn-catch-1:hover {
+            background: green;
+            color: white;
+
+        }
+
+        #btn-catch-2:hover {
+            background: greenyellow;
+            color: black;
+
+        }
+
+        img {
+            border-radius:50%;
+            padding: 10%
+        }
+
+        #submit {
+            border-color: greenyellow;
+            background: green;
+            color: white;
+            padding: 1em;
+            border: solid 1px green;
+            cursor: pointer;
+            border-radius: 0.5em;
+            width: 100%;
+        }
+
+        #submit:hover {
+            background: whitesmoke;
+            color: green;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 30%;
+        }
+
+        .cetak-tebal {
+            font-weight: bold;
+        }
+
+        /* test */
+
+        /* div {
+        padding: 5%;
+        }  */
+
+        /* .flex-container {
+        display: flex;
+        background-color: DodgerBlue;
+        }
+
+        .flex-container > div {
+        background-color: #f1f1f1;
+        margin: 10px;
+        padding: 20px;
+        font-size: 30px;
+        } */
+    </style> -->
+
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="home">HOME</a></li>
+            <li><a href="product">PRODUCT</a></li>
+            <li><a href="gallery">GALLERY</a></li>
+            <li><a href="blog">BLOG</a></li>
+            <li><a href="inventory">INVENTORY</a></li>
+        </ul>
+    </nav> <br><br>
+
+    <header>
+        <div id="display-picture">
+            <img src="assets-gambar/profile-picture.png" width="150px" alt="profile-picture">
+        </div>
+        <div id="nama-anda">
+            <h1 id="nama_anda"></h1>
+            <p id="pekerjaan_anda"></p>
+            <p>Edit Resume</p> <br><br>
+            <button id="btn-catch-1">Kontak</button>
+            <button id="btn-catch-2">Resume</button>
+        </div>
+
+        <table>
+            <tr>
+                <td class="cetak-tebal">Availibility</td>
+                <td id="availibility_anda"></td>
+            </tr>
+            <tr>
+                <td class="cetak-tebal">Usia</td>
+                <td id="umur_anda"></td>
+            </tr>
+            <tr>
+                <td class="cetak-tebal">Lokasi</td>
+                <td id="lokasi_anda"></td>
+            </tr>
+            <tr>
+                <td class="cetak-tebal">Pengalaman</td>
+                <td id="lama_pengalaman"></td>
+            </tr>
+            <tr>
+                <td class="cetak-tebal">email</td>
+                <td id="email_anda"></td>
+            </tr>
+        </table>
+
+    </header>
+
+    <form class="form" onsubmit="event.preventDefault();">
+        <label for="nama">Nama</label><br>
+        <input class="input" type="text" id="nama" name="nama" value="masukkan nama anda"><br/>
+        <label for="role">Role</label><br>
+        <input class="input" type="text" id="role"><br>
+        <label for="availibility">Availibility</label><br>
+        <input class="input" type="text" id="availibility"><br>
+        <label for="usia">Usia</label><br>
+        <input class="input" type="text" id="usia"><br>
+        <label for="lokasi">Lokasi</label><br>
+        <input class="input" type="text" id="lokasi"><br>
+        <label for="years experience">Years Experience</label><br>
+        <input class="input" type="text" id="years_experience"><br>
+        <label for="email">Email</label><br>
+        <input class="input" type="text" id="email"><br><br><br>
+        <button id="submit" onclick="updateProfile()">SUBMIT</button>
+    </form>
+
+    <script>
+        function updateProfile() {
+            let nama = document.getElementById("nama").value;
+            let role = document.getElementById("role").value;
+            let availibility = document.getElementById("availibility").value;
+            let usia = document.getElementById("usia").value;
+            let lokasi = document.getElementById("lokasi").value;
+            let years_experience = document.getElementById("years_experience").value;
+            let email = document.getElementById("email").value;
+
+            console.log(nama);
+            console.log(role);
+            console.log(availibility);
+            console.log(usia);
+            console.log(lokasi);
+            console.log(years_experience);
+            console.log(email);
+
+            document.getElementById("nama_anda").innerHTML = nama;
+            document.getElementById("pekerjaan_anda").innerHTML = role;
+            document.getElementById("availibility_anda").innerHTML = availibility;
+            document.getElementById("umur_anda").innerHTML = usia;
+            document.getElementById("lokasi_anda").innerHTML = lokasi;
+            document.getElementById("lama_pengalaman").innerHTML = years_experience;
+            document.getElementById("email_anda").innerHTML = email;
+        }
+    </script>
+
+    
+    
+</body>
+</html>
