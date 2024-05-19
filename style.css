@@ -31,7 +31,7 @@ body {
     color: white;
     }
 
-    header {
+    #biodata-container {
         display: flex;
         /* justify-content: space-between; */
         padding: 30px;
@@ -111,9 +111,25 @@ body {
         width: 100%;
     }
 
+    #reset-button {
+        border-color: red;
+        background: red;
+        color: white;
+        padding: 1em;
+        border: solid 1px pink;
+        cursor: pointer;
+        border-radius: 0.5em;
+        width: 100%;
+    }
+
     #submit:hover {
         background: whitesmoke;
         color: green;
+    }
+
+    #reset-button:hover {
+        background: whitesmoke;
+        color: red;
     }
 
     table {
@@ -123,4 +139,8 @@ body {
 
     .cetak-tebal {
         font-weight: bold;
+    }
+
+    #form-container {
+        display: none;
     }

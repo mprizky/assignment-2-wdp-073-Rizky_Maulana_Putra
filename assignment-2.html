@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>In Class Challenge</title>
+    <title>Assignment 2</title>
     <link rel="stylesheet" href="style.css">
 
     <!-- <style>
@@ -164,87 +164,181 @@
     </nav> <br><br>
 
     <header>
-        <div id="display-picture">
-            <img src="assets-gambar/profile-picture.png" width="150px" alt="profile-picture">
+        <div id="biodata-container">
+            <div id="display-picture">
+                <img src="assets-gambar/profile-picture.png" width="150px" alt="profile-picture">
+            </div>
+            <div id="nama-anda">
+                <h1 id="nama_anda">Nama Anda</h1>
+                <p id="pekerjaan_anda">Jabatan Saat Ini</p>
+                <button id="btn-catch-1">Edit</button>
+                <!-- <button id="btn-catch-2">Resume</button> -->
+            </div>
+    
+            <table>
+                <tr>
+                    <td class="cetak-tebal">Availibility</td>
+                    <td id="availibility_anda"></td>
+                </tr>
+                <tr>
+                    <td class="cetak-tebal">Usia</td>
+                    <td id="umur_anda"></td>
+                </tr>
+                <tr>
+                    <td class="cetak-tebal">Lokasi</td>
+                    <td id="lokasi_anda"></td>
+                </tr>
+                <tr>
+                    <td class="cetak-tebal">Pengalaman</td>
+                    <td id="years_experienceAnda"></td>
+                </tr>
+                <tr>
+                    <td class="cetak-tebal">email</td>
+                    <td id="email_anda"></td>
+                </tr>
+            </table>
         </div>
-        <div id="nama-anda">
-            <h1 id="nama_anda"></h1>
-            <p id="pekerjaan_anda"></p>
-            <p>Edit Resume</p> <br><br>
-            <button id="btn-catch-1">Kontak</button>
-            <button id="btn-catch-2">Resume</button>
-        </div>
-
-        <table>
-            <tr>
-                <td class="cetak-tebal">Availibility</td>
-                <td id="availibility_anda"></td>
-            </tr>
-            <tr>
-                <td class="cetak-tebal">Usia</td>
-                <td id="umur_anda"></td>
-            </tr>
-            <tr>
-                <td class="cetak-tebal">Lokasi</td>
-                <td id="lokasi_anda"></td>
-            </tr>
-            <tr>
-                <td class="cetak-tebal">Pengalaman</td>
-                <td id="lama_pengalaman"></td>
-            </tr>
-            <tr>
-                <td class="cetak-tebal">email</td>
-                <td id="email_anda"></td>
-            </tr>
-        </table>
 
     </header>
 
-    <form class="form" onsubmit="event.preventDefault();">
-        <label for="nama">Nama</label><br>
-        <input class="input" type="text" id="nama" name="nama" value="masukkan nama anda"><br/>
-        <label for="role">Role</label><br>
-        <input class="input" type="text" id="role"><br>
-        <label for="availibility">Availibility</label><br>
-        <input class="input" type="text" id="availibility"><br>
-        <label for="usia">Usia</label><br>
-        <input class="input" type="text" id="usia"><br>
-        <label for="lokasi">Lokasi</label><br>
-        <input class="input" type="text" id="lokasi"><br>
-        <label for="years experience">Years Experience</label><br>
-        <input class="input" type="text" id="years_experience"><br>
-        <label for="email">Email</label><br>
-        <input class="input" type="text" id="email"><br><br><br>
-        <button id="submit" onclick="updateProfile()">SUBMIT</button>
-    </form>
+    <div id="form-container">
+        <form id="biodata-form" onsubmit="updateProfile(event);">
+            <label for="nama">Nama</label><br>
+            <input class="input" type="text" id="nama" name="nama" value="masukkan nama anda"><br/>
+            <label for="role">Role</label><br>
+            <input class="input" type="text" id="role"><br>
+            <label for="availibility">Availibility</label><br>
+            <input class="input" type="text" id="availibility"><br>
+            <label for="usia">Usia</label><br>
+            <input class="input" type="text" id="usia"><br>
+            <label for="lokasi">Lokasi</label><br>
+            <input class="input" type="text" id="lokasi"><br>
+            <label for="years_experience">Years Experience</label><br>
+            <input class="input" type="text" id="years_experience"><br>
+            <label for="email">Email</label><br>
+            <input class="input" type="text" id="email"><br><br><br>
+            <button id="submit" onclick="updateProfile()">SUBMIT</button> <br>
+            <button type="button" id="reset-button">Reset</button>
+        </form>
+
+    </div>
 
     <script>
-        function updateProfile() {
-            let nama = document.getElementById("nama").value;
-            let role = document.getElementById("role").value;
-            let availibility = document.getElementById("availibility").value;
-            let usia = document.getElementById("usia").value;
-            let lokasi = document.getElementById("lokasi").value;
-            let years_experience = document.getElementById("years_experience").value;
-            let email = document.getElementById("email").value;
 
-            console.log(nama);
-            console.log(role);
-            console.log(availibility);
-            console.log(usia);
-            console.log(lokasi);
-            console.log(years_experience);
-            console.log(email);
+        const originalBiodata = {
+            nama: "Rizky Maulana Putra",
+            role: "Front End Engineer",
+            availibility: "Full Time",
+            usia: "31",
+            lokasi: "Jakarta, Indonesia",
+            years_experience: "1 Years",
+            email: "maulana.putrarizky@gmail.com"
+        };
 
-            document.getElementById("nama_anda").innerHTML = nama;
-            document.getElementById("pekerjaan_anda").innerHTML = role;
-            document.getElementById("availibility_anda").innerHTML = availibility;
-            document.getElementById("umur_anda").innerHTML = usia;
-            document.getElementById("lokasi_anda").innerHTML = lokasi;
-            document.getElementById("lama_pengalaman").innerHTML = years_experience;
-            document.getElementById("email_anda").innerHTML = email;
+        let biodata = {...originalBiodata};
+
+        const editButton = document.getElementById('btn-catch-1');
+        const formContainer = document.getElementById('form-container');
+        const submitButton = document.getElementById('submit');
+        const resetButton = document.getElementById('reset-button');
+
+        const nameInput = document.getElementById('nama');
+        const roleInput = document.getElementById('role');
+        const availibilityInput = document.getElementById('availibility');
+        const usiaInput = document.getElementById('usia');
+        const lokasiInput = document.getElementById('lokasi');
+        const yearsExperienceInput = document.getElementById('years_experience');
+        const emailInput = document.getElementById('email');
+
+        const nameDisplay = document.getElementById('nama_anda');
+        const roleDisplay = document.getElementById('pekerjaan_anda');
+        const availibilityDisplay = document.getElementById('availibility_anda');
+        const usiaDisplay = document.getElementById('umur_anda');
+        const lokasiDisplay = document.getElementById('lokasi_anda');
+        const yearsExperienceDisplay = document.getElementById('years_experienceAnda');
+        const emailDisplay = document.getElementById('email_anda');
+
+        function showForm() {
+            formContainer.style.display = 'block';
+            editButton.style.display = 'none';
+
+            nameInput.value = biodata.nama;
+            roleInput.value = biodata.role;
+            availibilityInput.value = biodata.availibility;
+            usiaInput.value = biodata.usia;
+            lokasiInput.value = biodata.lokasi;
+            yearsExperienceInput.value = biodata.years_experience;
+            emailInput.value = biodata.email;
+            
+
         }
-    </script>
+        
+        function updateProfile() {
+            event.preventDefault();
+
+            if (confirm("Apakah kamu yakin untuk submit perubahan?")) {
+
+                let nama = document.getElementById("nama").value;
+                let role = document.getElementById("role").value;
+                let availibility = document.getElementById("availibility").value;
+                let usia = document.getElementById("usia").value;
+                let lokasi = document.getElementById("lokasi").value;
+                let years_experience = document.getElementById("years_experience").value;
+                let email = document.getElementById("email").value;
+                
+                console.log(nama);
+                console.log(role);
+                console.log(availibility);
+                console.log(usia);
+                console.log(lokasi);
+                console.log(years_experience);
+                console.log(email);
+                
+                document.getElementById("nama_anda").innerHTML = nama;
+                document.getElementById("pekerjaan_anda").innerHTML = role;
+                document.getElementById("availibility_anda").innerHTML = availibility;
+                document.getElementById("umur_anda").innerHTML = usia;
+                document.getElementById("lokasi_anda").innerHTML = lokasi;
+                document.getElementById("years_experienceAnda").innerHTML = years_experience;
+                document.getElementById("email_anda").innerHTML = email;
+
+                formContainer.style.display = 'none';
+                editButton.style.display = 'inline';
+
+                alert("Data berhasil diubah!");
+            }
+        }
+
+        function resetProfile() {
+            biodata = {...originalBiodata};
+
+            nameDisplay.innerHTML = biodata.nama;
+            roleDisplay.innerHTML = biodata.role;
+            availibilityDisplay.innerHTML = biodata.availibility;
+            usiaDisplay.innerHTML = biodata.usia;
+            lokasiDisplay.innerHTML = biodata.lokasi;
+            yearsExperienceDisplay.innerHTML = biodata.years_experience;
+            emailDisplay.innerHTML = biodata.email;
+
+            if (formContainer.style.display === 'block') {
+                nameInput.value = biodata.nama;
+                roleInput.value = biodata.role;
+                availibilityInput.value = biodata.availibility;
+                usiaInput.value = biodata.usia;
+                lokasiInput.value = biodata.lokasi;
+                yearsExperienceInput.value = biodata.years_experience;
+                emailInput.value = biodata.email;
+
+            }
+
+
+
+        }
+
+        editButton.addEventListener('click', showForm);
+        // submitButton.addEventListener('click', updateProfile);
+        resetButton.addEventListener('click', resetProfile);
+    </script> 
 
     
     
